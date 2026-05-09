@@ -108,13 +108,7 @@
       box-shadow: 3px 2px 8px rgba(0,0,0,0.15); transform: translateX(4px);
       padding: 20px 16px;
     }
-    .tab-btn::before {
-      content: ''; position: absolute; left: -6px; top: 50%;
-      width: 8px; height: 20px; margin-top: -10px;
-      border-left: 1.5px solid var(--ink-faded); border-bottom: 1.5px solid var(--ink-faded);
-      border-radius: 0 0 0 8px; opacity: 0.3;
-    }
-    .tab-btn.active::before { opacity: 0.6; }
+
 
     .tab-about { background: var(--tab-about); }
     .tab-ledger { background: var(--tab-ledger); }
@@ -128,10 +122,9 @@
     @keyframes pageFade { from { opacity: 0; } to { opacity: 1; } }
 
     /* HERO */
-    .hero { position: relative; margin-bottom: 48px; min-height: 420px; }
+    .hero { display: grid; grid-template-columns: 1fr 280px; gap: 24px; align-items: start; margin-bottom: 32px; }
     .hero-text {
-      position: relative; z-index: 2; text-align: center;
-      padding: 60px 20px 40px; max-width: 600px; margin: 0 auto;
+      padding-top: 40px; text-align: center;
     }
     .hero-text h1 {
       font-family: var(--font-display); font-size: clamp(2.25rem, 5vw, 3.5rem);
@@ -139,14 +132,11 @@
     }
     .hero-tagline { font-family: var(--font-mono); font-size: 0.8125rem; color: var(--ink-faded); letter-spacing: 0.02em; }
     .hero-vine {
-      position: absolute; right: 0; top: 0; bottom: -600px;
-      width: 120px; z-index: 1; pointer-events: none;
-      display: flex; align-items: flex-end; justify-content: center;
-      overflow: visible;
+      display: flex; align-items: flex-start; justify-content: flex-end;
     }
 
     /* VINE */
-    .vine-main { width: 120px; height: 1240px; }
+    .vine-main { width: 100%; max-width: 280px; height: auto; }
     .vine-main .stem { stroke: var(--ink-medium); stroke-width: 3; fill: none; }
     .vine-main .branch { stroke: var(--ink-medium); stroke-width: 2.4; fill: none; }
     .vine-main .tendril { stroke: var(--ink-faded); stroke-width: 1.6; fill: none; }
@@ -283,7 +273,7 @@
     }
 
     /* MOBILE */
-    @media (max-width: 900px) {
+    @media (max-width: 768px) {
       .notebook-wrapper { margin-top: 64px; padding: 0 0 32px; grid-template-columns: 1fr; gap: 0; }
       .binder-strip { display: none; }
       .notebook { border-radius: 0; }
@@ -299,10 +289,9 @@
       }
       .tab-btn::before { display: none; }
       .tab-btn:hover, .tab-btn.active { transform: none; padding: 10px 16px; }
-      .hero { min-height: 380px; }
-      .hero-vine { width: 90px; bottom: -400px; }
-      .vine-main { width: 90px; height: 900px; }
-      .hero-text { padding: 40px 10px 30px; }
+      .hero { grid-template-columns: 1fr; gap: 16px; }
+      .hero-vine { order: -1; justify-content: center; }
+      .vine-main { max-width: 220px; }
       .services-grid { grid-template-columns: 1fr; }
       .top-bar-nav { gap: 16px; }
       .top-bar-nav a { font-size: 0.65rem; }
@@ -340,184 +329,128 @@
             <div class="hero-text">
               <h1>Tyler S. Smith</h1>
               <div class="hero-tagline">// software engineer · builder · problem solver</div>
+              <p style="font-family: var(--font-body); font-size: 1.05rem; color: var(--ink-medium); margin-top: 28px; max-width: 48ch; margin-left: auto; margin-right: auto; line-height: 1.6;">Software that works. Websites that sell. Every project architected from scratch, not dragged out of a template.</p>
+
+              <a href="#contact-section" class="btn-primary" style="margin-top: 24px;">Start a Conversation</a>
             </div>
             <div class="hero-vine">
-              <svg class="vine-main" viewBox="0 0 120 1240" xmlns="http://www.w3.org/2000/svg">
-                <!-- ============ MAIN STEM ============ -->
-                <path class="stem vine-draw" d="M60 1240 C57 1200, 64 1160, 60 1120 C56 1080, 63 1040, 60 1000 C57 960, 64 920, 60 880 C56 840, 63 800, 60 760 C57 720, 64 680, 60 640 C56 600, 63 560, 60 520 C57 480, 64 440, 60 400 C56 360, 63 320, 60 280 C57 240, 64 200, 60 160 C56 120, 60 80, 62 30"/>
+              <svg class="vine-main" viewBox="0 -20 300 520" xmlns="http://www.w3.org/2000/svg">
+                <!-- Main stem -->
+                <path class="stem vine-draw" d="M150 470 C148 430, 153 390, 150 350 C147 310, 153 270, 150 230 C147 190, 153 150, 150 110 C147 70, 150 40, 152 15"/>
 
-                <!-- ============ ROOTS ============ -->
-                <path class="tendril vine-draw vine-draw-d1" d="M60 1240 C42 1246, 20 1244, 5 1236"/>
-                <path class="tendril vine-draw vine-draw-d1" d="M60 1240 C78 1248, 98 1244, 115 1236"/>
-                <path class="tendril vine-draw vine-draw-d1" d="M60 1240 C52 1250, 38 1254, 24 1250"/>
-                <path class="tendril vine-draw vine-draw-d1" d="M60 1240 C68 1252, 82 1256, 96 1250"/>
-                <!-- Root hair details -->
-                <path class="tendril vine-draw vine-draw-d1" d="M5 1236 C0 1232, -2 1226, 2 1222"/>
-                <path class="tendril vine-draw vine-draw-d1" d="M115 1236 C118 1230, 120 1224, 116 1220"/>
-                <path class="tendril vine-draw vine-draw-d1" d="M24 1250 C18 1254, 12 1252, 10 1248"/>
-                <path class="tendril vine-draw vine-draw-d1" d="M96 1250 C102 1254, 108 1252, 110 1246"/>
+                <!-- Roots -->
+                <path class="tendril vine-draw vine-draw-d1" d="M150 470 C132 476, 108 474, 92 468"/>
+                <path class="tendril vine-draw vine-draw-d1" d="M150 470 C168 476, 192 474, 208 468"/>
+                <path class="tendril vine-draw vine-draw-d1" d="M92 468 C86 464, 82 458, 86 454"/>
+                <path class="tendril vine-draw vine-draw-d1" d="M208 468 C214 464, 218 458, 214 454"/>
+                <!-- Extra roots -->
+                <path class="tendril vine-draw vine-draw-d1" d="M150 470 C140 478, 125 482, 110 480"/>
+                <path class="tendril vine-draw vine-draw-d1" d="M150 470 C160 478, 175 482, 190 480"/>
+                <path class="tendril vine-draw vine-draw-d1" d="M110 480 C104 478, 98 474, 96 468"/>
+                <path class="tendril vine-draw vine-draw-d1" d="M190 480 C196 478, 202 474, 204 468"/>
+                <path class="tendril vine-draw vine-draw-d1" d="M92 468 C80 464, 72 460, 68 454"/>
+                <path class="tendril vine-draw vine-draw-d1" d="M208 468 C220 464, 228 460, 232 454"/>
+                <path class="tendril vine-draw vine-draw-d1" d="M150 470 C148 480, 145 488, 140 492"/>
+                <path class="tendril vine-draw vine-draw-d1" d="M150 470 C152 480, 155 488, 160 492"/>
 
-                <!-- ====== BRANCH 1: LEDGER (green #2D6A4F) - RIGHT at y~1000 ====== -->
-                <path class="branch vine-draw vine-draw-d2" d="M60 1000 C78 994, 96 986, 120 980" style="stroke: #2D6A4F;"/>
-                <path class="branch vine-draw vine-draw-d2" d="M60 1000 C42 992, 22 980, 5 968" style="stroke: #2D6A4F;"/>
-                <!-- Sub-branch with curl -->
-                <path class="tendril vine-draw vine-draw-d3" d="M5 968 C-2 958, -4 946, 2 938" style="stroke: #2D6A4F; stroke-width: 1.2;"/>
-                <path class="tendril vine-draw vine-draw-d3" d="M2 938 C-2 932, -6 930, -4 936 C-2 942, 2 940, 0 934" style="stroke: #2D6A4F; stroke-width: 1.2;"/>
-                <!-- Shield-shaped leaves (Ledger = sturdy, protective) -->
-                <g class="vine-fade vine-fade-d2">
-                  <path d="M5 968 C-6 952, -8 938, 5 928 C18 938, 16 952, 5 968Z" style="stroke: #2D6A4F; stroke-width: 1.8; fill: #2D6A4F; fill-opacity: 0.07;"/>
-                  <line x1="5" y1="966" x2="5" y2="930" style="stroke: #2D6A4F; stroke-width: 1;" opacity="0.25"/>
-                  <line x1="-2" y1="948" x2="12" y2="948" style="stroke: #2D6A4F; stroke-width: 0.6;" opacity="0.15"/>
-                </g>
-                <!-- Paired leaves along right sub-branch -->
-                <g class="vine-fade vine-fade-d2">
-                  <path d="M82 990 C76 982, 74 974, 80 970 C86 974, 86 982, 82 990Z" style="stroke: #2D6A4F; stroke-width: 1.5; fill: #2D6A4F; fill-opacity: 0.06;"/>
-                  <path d="M88 992 C94 984, 96 976, 90 972 C84 978, 84 986, 88 992Z" style="stroke: #2D6A4F; stroke-width: 1.5; fill: #2D6A4F; fill-opacity: 0.06;"/>
-                </g>
-                <g class="vine-fade vine-fade-d2">
-                  <path d="M32 984 C26 976, 24 968, 30 964 C36 968, 36 976, 32 984Z" style="stroke: #2D6A4F; stroke-width: 1.5; fill: #2D6A4F; fill-opacity: 0.06;"/>
-                  <path d="M38 986 C44 978, 46 970, 40 966 C34 972, 34 980, 38 986Z" style="stroke: #2D6A4F; stroke-width: 1.5; fill: #2D6A4F; fill-opacity: 0.06;"/>
-                </g>
-                <!-- Seed pod -->
-                <g class="vine-fade vine-fade-d3">
-                  <ellipse cx="100" cy="984" rx="4" ry="7" style="stroke: #2D6A4F; stroke-width: 1.2; fill: #2D6A4F; fill-opacity: 0.08;" transform="rotate(15 100 984)"/>
-                </g>
-                <text class="label-text vine-fade vine-fade-d2" x="2" y="922" style="fill: #2D6A4F;">ledger</text>
-                <circle class="node vine-fade vine-fade-d2" cx="60" cy="1000" r="5" style="fill: #2D6A4F; opacity: 0.5;"/>
+                <!-- Trunk curls -->
+                <path class="tendril vine-draw vine-draw-d2" d="M150 410 C140 406, 134 408, 134 414 C134 420, 141 420, 140 416"/>
+                <path class="tendril vine-draw vine-draw-d3" d="M150 310 C160 306, 166 308, 166 314 C166 320, 159 320, 160 316"/>
+                <path class="tendril vine-draw vine-draw-d4" d="M150 190 C140 186, 134 188, 134 194 C134 200, 141 200, 140 196"/>
+                <path class="tendril vine-draw vine-draw-d5" d="M150 80 C160 76, 166 78, 166 84 C166 90, 159 90, 160 86"/>
 
-                <!-- ====== BRANCH 2: LORE (crimson #8B2232 + gold #C9A84C) - LEFT at y~800 ====== -->
-                <path class="branch vine-draw vine-draw-d2" d="M60 800 C38 792, 18 784, 0 778" style="stroke: #8B2232;"/>
-                <path class="branch vine-draw vine-draw-d3" d="M60 800 C80 794, 100 786, 115 775" style="stroke: #8B2232;"/>
-                <!-- Curling sub-tendril -->
-                <path class="tendril vine-draw vine-draw-d4" d="M115 775 C120 768, 122 762, 118 758 C114 762, 116 768, 120 764" style="stroke: #8B2232; stroke-width: 1.2;"/>
-                <!-- Ornate double leaves (Lore = literary, flowing) -->
-                <g class="vine-fade vine-fade-d3">
-                  <path d="M115 775 C122 758, 124 742, 115 735 C106 745, 106 760, 115 775Z" style="stroke: #8B2232; stroke-width: 1.8; fill: #8B2232; fill-opacity: 0.06;"/>
-                  <path d="M115 775 C108 758, 106 742, 115 735 C124 745, 124 760, 115 775Z" style="stroke: #8B2232; stroke-width: 1.8; fill: #8B2232; fill-opacity: 0.06;"/>
-                  <line x1="115" y1="775" x2="115" y2="737" style="stroke: #8B2232; stroke-width: 0.8;" opacity="0.2"/>
-                </g>
-                <!-- Smaller leaf pair on left branch -->
-                <g class="vine-fade vine-fade-d3">
-                  <path d="M28 786 C22 778, 20 770, 26 766 C32 770, 32 778, 28 786Z" style="stroke: #8B2232; stroke-width: 1.5; fill: #8B2232; fill-opacity: 0.06;"/>
-                  <path d="M34 788 C40 780, 42 772, 36 768 C30 774, 30 782, 34 788Z" style="stroke: #8B2232; stroke-width: 1.5; fill: #8B2232; fill-opacity: 0.06;"/>
-                </g>
-                <!-- Gold berry cluster -->
-                <g class="vine-fade vine-fade-d3">
-                  <circle cx="116" cy="732" r="5.5" style="fill: #C9A84C; opacity: 0.4;"/>
-                  <circle cx="108" cy="728" r="4.5" style="fill: #C9A84C; opacity: 0.35;"/>
-                  <circle cx="112" cy="722" r="3.5" style="fill: #C9A84C; opacity: 0.3;"/>
-                  <circle cx="120" cy="724" r="3" style="fill: #C9A84C; opacity: 0.25;"/>
-                </g>
-                <text class="label-text vine-fade vine-fade-d3" x="4" y="774" style="fill: #8B2232;">lore</text>
-                <circle class="node vine-fade vine-fade-d3" cx="60" cy="800" r="5" style="fill: #8B2232; opacity: 0.5;"/>
-
-                <!-- ====== BRANCH 3: WARDEN (sepia #8B7355) - RIGHT at y~580 ====== -->
-                <path class="branch vine-draw vine-draw-d3" d="M60 580 C80 574, 98 566, 120 560" style="stroke: #8B7355;"/>
-                <path class="branch vine-draw vine-draw-d4" d="M60 580 C40 572, 20 562, 5 548" style="stroke: #8B7355;"/>
-                <path class="tendril vine-draw vine-draw-d4" d="M5 548 C0 538, -2 528, 4 520" style="stroke: #8B7355; stroke-width: 1.2;"/>
-                <path class="tendril vine-draw vine-draw-d4" d="M4 520 C0 514, -4 512, -2 518 C0 524, 4 522, 2 516" style="stroke: #8B7355; stroke-width: 1.2;"/>
-                <!-- Key motif (Warden = property, keys) -->
-                <g class="vine-fade vine-fade-d4">
-                  <circle cx="5" cy="512" r="11" style="stroke: #8B7355; stroke-width: 1.8; fill: #8B7355; fill-opacity: 0.05;"/>
-                  <circle cx="5" cy="512" r="4" style="stroke: #8B7355; stroke-width: 1; fill: none; opacity: 0.2;"/>
-                  <line x1="5" y1="523" x2="5" y2="548" style="stroke: #8B7355; stroke-width: 1.8; opacity: 0.35;"/>
-                  <line x1="5" y1="538" x2="13" y2="538" style="stroke: #8B7355; stroke-width: 1.5; opacity: 0.25;"/>
-                  <line x1="5" y1="545" x2="11" y2="545" style="stroke: #8B7355; stroke-width: 1.5; opacity: 0.25;"/>
-                </g>
-                <!-- Leaves along branches -->
-                <g class="vine-fade vine-fade-d4">
-                  <path d="M88 568 C82 560, 80 552, 86 548 C92 552, 92 560, 88 568Z" style="stroke: #8B7355; stroke-width: 1.5; fill: #8B7355; fill-opacity: 0.06;"/>
-                  <path d="M94 570 C100 562, 102 554, 96 550 C90 556, 90 564, 94 570Z" style="stroke: #8B7355; stroke-width: 1.5; fill: #8B7355; fill-opacity: 0.06;"/>
-                </g>
-                <g class="vine-fade vine-fade-d4">
-                  <path d="M30 568 C24 560, 22 552, 28 548 C34 552, 34 560, 30 568Z" style="stroke: #8B7355; stroke-width: 1.5; fill: #8B7355; fill-opacity: 0.06;"/>
-                </g>
-                <text class="label-text vine-fade vine-fade-d4" x="2" y="498" style="fill: #8B7355;">warden</text>
-                <circle class="node vine-fade vine-fade-d4" cx="60" cy="580" r="5" style="fill: #8B7355; opacity: 0.5;"/>
-
-                <!-- ====== BRANCH 4: PUMPKIN (orange #C97B4C) - LEFT at y~360 ====== -->
-                <path class="branch vine-draw vine-draw-d4" d="M60 360 C40 352, 18 344, 0 338" style="stroke: #C97B4C;"/>
-                <path class="branch vine-draw vine-draw-d5" d="M60 360 C80 354, 100 346, 115 335" style="stroke: #C97B4C;"/>
-                <path class="tendril vine-draw vine-draw-d5" d="M115 335 C120 326, 122 318, 116 312" style="stroke: #C97B4C; stroke-width: 1.2;"/>
-                <path class="tendril vine-draw vine-draw-d5" d="M116 312 C120 306, 122 302, 118 308" style="stroke: #C97B4C; stroke-width: 1.2;"/>
-                <!-- Gourd/flower bud (Pumpkin = organic, seasonal) -->
-                <g class="vine-fade vine-fade-d5">
-                  <path d="M115 312 C108 298, 105 284, 112 276 C119 284, 122 298, 115 312Z" style="stroke: #C97B4C; stroke-width: 1.8; fill: #C97B4C; fill-opacity: 0.07;"/>
-                  <path d="M115 312 C122 298, 125 284, 118 276 C111 284, 108 298, 115 312Z" style="stroke: #C97B4C; stroke-width: 1.8; fill: #C97B4C; fill-opacity: 0.07;"/>
-                  <line x1="115" y1="310" x2="115" y2="278" style="stroke: #C97B4C; stroke-width: 0.8;" opacity="0.2"/>
-                  <circle cx="115" cy="274" r="4" style="fill: #C97B4C; opacity: 0.2;"/>
-                  <!-- Calyx -->
-                  <path d="M112 276 C108 270, 110 264, 114 262" style="stroke: #C97B4C; stroke-width: 1; fill: none; opacity: 0.25;"/>
-                  <path d="M118 276 C122 270, 120 264, 116 262" style="stroke: #C97B4C; stroke-width: 1; fill: none; opacity: 0.25;"/>
-                </g>
-                <!-- Leaves -->
-                <g class="vine-fade vine-fade-d5">
-                  <path d="M28 346 C22 338, 20 330, 26 326 C32 330, 32 338, 28 346Z" style="stroke: #C97B4C; stroke-width: 1.5; fill: #C97B4C; fill-opacity: 0.06;"/>
-                  <path d="M34 348 C40 340, 42 332, 36 328 C30 334, 30 342, 34 348Z" style="stroke: #C97B4C; stroke-width: 1.5; fill: #C97B4C; fill-opacity: 0.06;"/>
-                </g>
-                <g class="vine-fade vine-fade-d5">
-                  <path d="M90 342 C84 334, 82 326, 88 322 C94 326, 94 334, 90 342Z" style="stroke: #C97B4C; stroke-width: 1.5; fill: #C97B4C; fill-opacity: 0.06;"/>
-                </g>
-                <text class="label-text vine-fade vine-fade-d5" x="4" y="334" style="fill: #C97B4C;">pumpkin</text>
-                <circle class="node vine-fade vine-fade-d5" cx="60" cy="360" r="5" style="fill: #C97B4C; opacity: 0.5;"/>
-
-                <!-- ====== CROWN FLOWER (About - #BF6B63) ====== -->
+                <!-- Trunk leaf pairs -->
                 <g class="vine-fade vine-fade-d1">
-                  <!-- Outer ring -->
-                  <circle cx="62" cy="24" r="14" style="stroke: #BF6B63; stroke-width: 2; fill: none; opacity: 0.4;"/>
-                  <!-- Inner -->
-                  <circle cx="62" cy="24" r="6" style="fill: #BF6B63; opacity: 0.2;"/>
-                  <!-- 5 petals -->
-                  <path d="M62 10 C57 0, 52 -4, 56 -6 C62 -2, 65 2, 62 10Z" style="stroke: #BF6B63; stroke-width: 1.5; fill: #BF6B63; fill-opacity: 0.07;"/>
-                  <path d="M76 18 C84 12, 88 8, 90 14 C84 18, 80 20, 76 18Z" style="stroke: #BF6B63; stroke-width: 1.5; fill: #BF6B63; fill-opacity: 0.07;"/>
-                  <path d="M48 18 C40 12, 36 8, 34 14 C40 18, 44 20, 48 18Z" style="stroke: #BF6B63; stroke-width: 1.5; fill: #BF6B63; fill-opacity: 0.07;"/>
-                  <path d="M72 34 C78 42, 80 46, 76 48 C72 44, 70 38, 72 34Z" style="stroke: #BF6B63; stroke-width: 1.5; fill: #BF6B63; fill-opacity: 0.06;"/>
-                  <path d="M52 34 C46 42, 44 46, 48 48 C52 44, 54 38, 52 34Z" style="stroke: #BF6B63; stroke-width: 1.5; fill: #BF6B63; fill-opacity: 0.06;"/>
-                  <!-- Stamen dots -->
-                  <circle cx="62" cy="14" r="1.5" style="fill: #BF6B63; opacity: 0.3;"/>
-                  <circle cx="68" cy="20" r="1.5" style="fill: #BF6B63; opacity: 0.3;"/>
-                  <circle cx="56" cy="20" r="1.5" style="fill: #BF6B63; opacity: 0.3;"/>
-                </g>
-                <text class="label-text vine-fade vine-fade-d1" x="62" y="58" text-anchor="middle" style="fill: #BF6B63; opacity: 0.5;">about</text>
-
-                <!-- ============ STEM DETAILS ============ -->
-                <!-- Tiny leaves sprouting directly from stem -->
-                <g class="vine-fade vine-fade-d1">
-                  <path d="M58 1140 C52 1134, 50 1126, 55 1122 C60 1126, 60 1134, 58 1140Z" style="stroke: var(--ink-faded); stroke-width: 1.2; fill: var(--ink-medium); fill-opacity: 0.05;"/>
-                  <path d="M62 1138 C68 1132, 70 1124, 65 1120 C60 1124, 60 1132, 62 1138Z" style="stroke: var(--ink-faded); stroke-width: 1.2; fill: var(--ink-medium); fill-opacity: 0.05;"/>
-                </g>
-                <g class="vine-fade vine-fade-d2">
-                  <path d="M62 900 C68 894, 70 886, 65 882 C60 886, 60 894, 62 900Z" style="stroke: var(--ink-faded); stroke-width: 1.2; fill: var(--ink-medium); fill-opacity: 0.05;"/>
+                  <path d="M150 440 C142 432, 138 424, 144 420 C148 424, 148 432, 150 440Z" style="stroke: var(--ink-faded); stroke-width: 1.2; fill: var(--ink-medium); fill-opacity: 0.05;"/>
+                  <path d="M150 440 C158 432, 162 424, 156 420 C152 424, 152 432, 150 440Z" style="stroke: var(--ink-faded); stroke-width: 1.2; fill: var(--ink-medium); fill-opacity: 0.05;"/>
                 </g>
                 <g class="vine-fade vine-fade-d3">
-                  <path d="M58 690 C52 684, 50 676, 55 672 C60 676, 60 684, 58 690Z" style="stroke: var(--ink-faded); stroke-width: 1.2; fill: var(--ink-medium); fill-opacity: 0.05;"/>
-                  <path d="M62 688 C68 682, 70 674, 65 670 C60 674, 60 682, 62 688Z" style="stroke: var(--ink-faded); stroke-width: 1.2; fill: var(--ink-medium); fill-opacity: 0.05;"/>
+                  <path d="M150 270 C142 262, 138 254, 144 250 C148 254, 148 262, 150 270Z" style="stroke: var(--ink-faded); stroke-width: 1.2; fill: var(--ink-medium); fill-opacity: 0.05;"/>
+                  <path d="M150 270 C158 262, 162 254, 156 250 C152 254, 152 262, 150 270Z" style="stroke: var(--ink-faded); stroke-width: 1.2; fill: var(--ink-medium); fill-opacity: 0.05;"/>
+                </g>
+                <g class="vine-fade vine-fade-d5">
+                  <path d="M150 140 C158 132, 162 124, 156 120 C152 124, 152 132, 150 140Z" style="stroke: var(--ink-faded); stroke-width: 1.2; fill: var(--ink-medium); fill-opacity: 0.05;"/>
+                </g>
+
+                <!-- BRANCH: LEDGER (green) y=370, right -->
+                <circle cx="150" cy="370" r="4" style="fill: #2D6A4F; opacity: 0.5;" class="vine-fade vine-fade-d2"/>
+                <path class="branch vine-draw vine-draw-d2" d="M150 370 C180 364, 215 356, 248 348" style="stroke: #2D6A4F;"/>
+                <g class="vine-fade vine-fade-d2">
+                  <path d="M200 358 C194 350, 192 342, 198 338 C204 342, 204 350, 200 358Z" style="stroke: #2D6A4F; stroke-width: 1.4; fill: #2D6A4F; fill-opacity: 0.06;"/>
+                  <path d="M206 360 C212 352, 214 344, 208 340 C202 346, 202 354, 206 360Z" style="stroke: #2D6A4F; stroke-width: 1.4; fill: #2D6A4F; fill-opacity: 0.06;"/>
+                </g>
+                <g class="vine-fade vine-fade-d2">
+                  <path d="M248 348 C240 334, 238 322, 248 316 C258 322, 256 334, 248 348Z" style="stroke: #2D6A4F; stroke-width: 1.6; fill: #2D6A4F; fill-opacity: 0.06;"/>
+                  <line x1="248" y1="346" x2="248" y2="318" style="stroke: #2D6A4F; stroke-width: 0.7;" opacity="0.2"/>
+                </g>
+                <text class="label-text vine-fade vine-fade-d2" x="236" y="310" style="fill: #2D6A4F;">ledger</text>
+
+                <!-- BRANCH: LORE (crimson/gold) y=280, left -->
+                <circle cx="150" cy="280" r="4" style="fill: #8B2232; opacity: 0.5;" class="vine-fade vine-fade-d3"/>
+                <path class="branch vine-draw vine-draw-d3" d="M150 280 C120 272, 82 264, 50 258" style="stroke: #8B2232;"/>
+                <g class="vine-fade vine-fade-d3">
+                  <path d="M96 268 C90 260, 88 252, 94 248 C100 252, 100 260, 96 268Z" style="stroke: #8B2232; stroke-width: 1.4; fill: #8B2232; fill-opacity: 0.05;"/>
+                  <path d="M102 270 C108 262, 110 254, 104 250 C98 256, 98 264, 102 270Z" style="stroke: #8B2232; stroke-width: 1.4; fill: #8B2232; fill-opacity: 0.05;"/>
+                </g>
+                <g class="vine-fade vine-fade-d3">
+                  <path d="M50 258 C42 244, 40 232, 50 226 C60 232, 58 244, 50 258Z" style="stroke: #8B2232; stroke-width: 1.6; fill: #8B2232; fill-opacity: 0.05;"/>
+                  <path d="M50 258 C58 244, 60 232, 50 226 C40 234, 42 246, 50 258Z" style="stroke: #8B2232; stroke-width: 1.6; fill: #8B2232; fill-opacity: 0.05;"/>
                 </g>
                 <g class="vine-fade vine-fade-d4">
-                  <path d="M62 470 C68 464, 70 456, 65 452 C60 456, 60 464, 62 470Z" style="stroke: var(--ink-faded); stroke-width: 1.2; fill: var(--ink-medium); fill-opacity: 0.05;"/>
+                  <circle cx="50" cy="223" r="4.5" style="fill: #C9A84C; opacity: 0.4;"/>
+                  <circle cx="43" cy="220" r="3.5" style="fill: #C9A84C; opacity: 0.35;"/>
+                  <circle cx="57" cy="220" r="3" style="fill: #C9A84C; opacity: 0.3;"/>
                 </g>
-                <g class="vine-fade vine-fade-d5">
-                  <path d="M58 220 C52 214, 50 206, 55 202 C60 206, 60 214, 58 220Z" style="stroke: var(--ink-faded); stroke-width: 1.2; fill: var(--ink-medium); fill-opacity: 0.05;"/>
-                  <path d="M62 218 C68 212, 70 204, 65 200 C60 204, 60 212, 62 218Z" style="stroke: var(--ink-faded); stroke-width: 1.2; fill: var(--ink-medium); fill-opacity: 0.05;"/>
-                </g>
-                <g class="vine-fade vine-fade-d5">
-                  <path d="M62 130 C68 124, 70 116, 65 112 C60 116, 60 124, 62 130Z" style="stroke: var(--ink-faded); stroke-width: 1.2; fill: var(--ink-medium); fill-opacity: 0.05;"/>
-                </g>
+                <text class="label-text vine-fade vine-fade-d3" x="38" y="216" style="fill: #8B2232;">lore</text>
 
-                <!-- Curling tendrils along stem -->
-                <path class="tendril vine-draw vine-draw-d1" d="M60 1180 C48 1175, 40 1178, 40 1186 C40 1194, 48 1194, 46 1188"/>
-                <path class="tendril vine-draw vine-draw-d2" d="M60 1060 C72 1055, 80 1058, 82 1066 C84 1074, 76 1074, 74 1068"/>
-                <path class="tendril vine-draw vine-draw-d2" d="M60 940 C48 935, 40 938, 40 946 C40 954, 48 954, 46 948"/>
-                <path class="tendril vine-draw vine-draw-d3" d="M60 720 C72 715, 80 718, 82 726 C84 734, 76 734, 74 728"/>
-                <path class="tendril vine-draw vine-draw-d4" d="M60 490 C48 485, 40 488, 40 496 C40 504, 48 504, 46 498"/>
-                <path class="tendril vine-draw vine-draw-d5" d="M60 260 C72 255, 80 258, 82 266 C84 274, 76 274, 74 268"/>
-                <path class="tendril vine-draw vine-draw-d5" d="M60 150 C48 145, 40 148, 40 156 C40 164, 48 164, 46 158"/>
+                <!-- BRANCH: WARDEN (sepia) y=190, right -->
+                <circle cx="150" cy="190" r="4" style="fill: #8B7355; opacity: 0.5;" class="vine-fade vine-fade-d4"/>
+                <path class="branch vine-draw vine-draw-d4" d="M150 190 C180 184, 215 176, 245 170" style="stroke: #8B7355;"/>
+                <g class="vine-fade vine-fade-d4">
+                  <path d="M200 180 C194 172, 192 164, 198 160 C204 164, 204 172, 200 180Z" style="stroke: #8B7355; stroke-width: 1.4; fill: #8B7355; fill-opacity: 0.05;"/>
+                  <path d="M206 181 C212 173, 214 165, 208 161 C202 167, 202 175, 206 181Z" style="stroke: #8B7355; stroke-width: 1.4; fill: #8B7355; fill-opacity: 0.05;"/>
+                </g>
+                <!-- Key at tip -->
+                <path class="tendril vine-draw vine-draw-d4" d="M245 170 C250 162, 252 154, 248 148" style="stroke: #8B7355; stroke-width: 1;"/>
+                <g class="vine-fade vine-fade-d4">
+                  <circle cx="248" cy="140" r="9" style="stroke: #8B7355; stroke-width: 1.6; fill: #8B7355; fill-opacity: 0.04;"/>
+                  <circle cx="248" cy="140" r="3.5" style="stroke: #8B7355; stroke-width: 0.7; fill: none; opacity: 0.15;"/>
+                  <line x1="248" y1="149" x2="248" y2="170" style="stroke: #8B7355; stroke-width: 1.6; opacity: 0.25;"/>
+                  <line x1="248" y1="162" x2="254" y2="162" style="stroke: #8B7355; stroke-width: 1.2; opacity: 0.2;"/>
+                  <line x1="248" y1="168" x2="253" y2="168" style="stroke: #8B7355; stroke-width: 1.2; opacity: 0.2;"/>
+                </g>
+                <text class="label-text vine-fade vine-fade-d4" x="236" y="130" style="fill: #8B7355;">warden</text>
 
-                <!-- Faint circuit dashes -->
-                <line x1="60" y1="1020" x2="60" y2="820" stroke="var(--ink-faded)" stroke-width="0.4" stroke-dasharray="3 6" opacity="0.12"/>
-                <line x1="60" y1="780" x2="60" y2="600" stroke="var(--ink-faded)" stroke-width="0.4" stroke-dasharray="3 6" opacity="0.12"/>
-                <line x1="60" y1="560" x2="60" y2="380" stroke="var(--ink-faded)" stroke-width="0.4" stroke-dasharray="3 6" opacity="0.12"/>
-                <line x1="60" y1="340" x2="60" y2="80" stroke="var(--ink-faded)" stroke-width="0.4" stroke-dasharray="3 6" opacity="0.12"/>
+                <!-- BRANCH: PUMPKIN (orange) y=110, left -->
+                <circle cx="150" cy="110" r="4" style="fill: #C97B4C; opacity: 0.5;" class="vine-fade vine-fade-d5"/>
+                <path class="branch vine-draw vine-draw-d5" d="M150 110 C120 104, 82 96, 52 90" style="stroke: #C97B4C;"/>
+                <g class="vine-fade vine-fade-d5">
+                  <path d="M96 100 C90 92, 88 84, 94 80 C100 84, 100 92, 96 100Z" style="stroke: #C97B4C; stroke-width: 1.4; fill: #C97B4C; fill-opacity: 0.05;"/>
+                  <path d="M102 102 C108 94, 110 86, 104 82 C98 88, 98 96, 102 102Z" style="stroke: #C97B4C; stroke-width: 1.4; fill: #C97B4C; fill-opacity: 0.05;"/>
+                </g>
+                <!-- Gourd at tip -->
+                <path class="tendril vine-draw vine-draw-d5" d="M52 90 C46 82, 44 76, 48 70" style="stroke: #C97B4C; stroke-width: 1;"/>
+                <g class="vine-fade vine-fade-d5">
+                  <path d="M48 70 C42 58, 40 48, 46 42 C52 48, 54 58, 48 70Z" style="stroke: #C97B4C; stroke-width: 1.6; fill: #C97B4C; fill-opacity: 0.06;"/>
+                  <path d="M48 70 C54 58, 56 48, 50 42 C44 48, 42 58, 48 70Z" style="stroke: #C97B4C; stroke-width: 1.6; fill: #C97B4C; fill-opacity: 0.06;"/>
+                  <circle cx="48" cy="40" r="3.5" style="fill: #C97B4C; opacity: 0.2;"/>
+                </g>
+                <text class="label-text vine-fade vine-fade-d5" x="36" y="36" style="fill: #C97B4C;">pumpkin</text>
+
+                <!-- CROWN FLOWER (About) -->
+                <g class="vine-fade vine-fade-d1">
+                  <circle cx="152" cy="15" r="10" style="stroke: #BF6B63; stroke-width: 1.8; fill: none; opacity: 0.4;"/>
+                  <circle cx="152" cy="15" r="4" style="fill: #BF6B63; opacity: 0.2;"/>
+                  <path d="M152 5 C149 0, 147 -2, 149 -3 C152 -1, 154 2, 152 5Z" style="stroke: #BF6B63; stroke-width: 1.3; fill: #BF6B63; fill-opacity: 0.06;"/>
+                  <path d="M162 11 C166 7, 169 6, 169 9 C167 12, 164 13, 162 11Z" style="stroke: #BF6B63; stroke-width: 1.3; fill: #BF6B63; fill-opacity: 0.06;"/>
+                  <path d="M142 11 C138 7, 135 6, 135 9 C137 12, 140 13, 142 11Z" style="stroke: #BF6B63; stroke-width: 1.3; fill: #BF6B63; fill-opacity: 0.06;"/>
+                </g>
+                <text class="label-text vine-fade vine-fade-d1" x="168" y="19" style="fill: #BF6B63; opacity: 0.5;">about</text>
+
+                <!-- Circuit dashes -->
+                <line x1="150" y1="380" x2="150" y2="290" stroke="var(--ink-faded)" stroke-width="0.4" stroke-dasharray="3 6" opacity="0.1"/>
+                <line x1="150" y1="270" x2="150" y2="200" stroke="var(--ink-faded)" stroke-width="0.4" stroke-dasharray="3 6" opacity="0.1"/>
+                <line x1="150" y1="180" x2="150" y2="120" stroke="var(--ink-faded)" stroke-width="0.4" stroke-dasharray="3 6" opacity="0.1"/>
               </svg>
             </div>
           </div>
@@ -579,7 +512,7 @@
             };
           </div>
 
-          <h2 class="section-heading reveal">Get In Touch</h2>
+          <h2 class="section-heading reveal" id="contact-section">Get In Touch</h2>
           <div class="contact-block reveal">
             <h3>Let's talk about your project</h3>
             <a href="mailto:Tyler_Smith1@alumni.brown.edu" class="contact-link">Tyler_Smith1@alumni.brown.edu</a>
