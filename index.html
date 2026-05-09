@@ -49,7 +49,8 @@
     /* TOP BAR */
     .top-bar {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex; align-items: center; justify-content: center;
+      gap: 48px;
       padding: 16px clamp(20px, 4vw, 48px);
       background: rgba(30, 28, 26, 0.92);
       backdrop-filter: blur(12px);
@@ -124,7 +125,7 @@
     /* HERO */
     .hero { display: grid; grid-template-columns: 1fr 280px; gap: 24px; align-items: start; margin-bottom: 32px; }
     .hero-text {
-      padding-top: 40px; text-align: center;
+      padding-top: 70px; text-align: center;
     }
     .hero-text h1 {
       font-family: var(--font-display); font-size: clamp(2.25rem, 5vw, 3.5rem);
@@ -250,8 +251,8 @@
     /* Brand-colored buttons */
     .btn-ledger { background: var(--tab-ledger); }
     .btn-ledger:hover { background: #245a42; }
-    .btn-lore { background: #8B2232; }
-    .btn-lore:hover { background: #6E1A28; }
+    .btn-lore { background: #C9A84C; }
+    .btn-lore:hover { background: #B8943F; }
 
     /* CONTACT */
     .contact-block { background: var(--parchment-light); border: 1px solid var(--parchment-dark); border-radius: 8px; padding: 32px; max-width: 520px; }
@@ -331,11 +332,41 @@
               <div class="hero-tagline">// software engineer · builder · problem solver</div>
               <p style="font-family: var(--font-body); font-size: 1.05rem; color: var(--ink-medium); margin-top: 28px; max-width: 48ch; margin-left: auto; margin-right: auto; line-height: 1.6;">Software that works. Websites that sell. Every project architected from scratch, not dragged out of a template.</p>
 
-              <a href="#contact-section" class="btn-primary" style="margin-top: 24px;">Start a Conversation</a>
+              <div style="margin-top: 28px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                <span class="status-dot"></span>
+                <span style="font-family: var(--font-body); font-style: italic; color: var(--ink-medium); font-size: 0.9rem;">Currently accepting new projects - let's build something together.</span>
+              </div>
+              <a href="#contact-section" class="btn-primary" style="margin-top: 16px;">Start a Conversation</a>
             </div>
             <div class="hero-vine">
               <svg class="vine-main" viewBox="0 -20 300 520" xmlns="http://www.w3.org/2000/svg">
-                <!-- Main stem -->
+                <!-- WATERCOLOR BLOTS -->
+                <defs>
+                  <filter id="soft" x="-30%" y="-50%" width="160%" height="200%">
+                    <feGaussianBlur stdDeviation="6"/>
+                  </filter>
+                </defs>
+
+                <!-- LEDGER (green) - RIGHT branch only, x=145 to x=255, y=340 to y=390 -->
+                <path d="M148 362 C158 352, 178 348, 200 352 C218 348, 238 350, 252 358 C260 364, 258 375, 248 380 C240 388, 218 392, 195 388 C172 392, 155 386, 148 378 C142 372, 142 368, 148 362Z" fill="#2D6A4F" opacity="0.4" filter="url(#soft)"/>
+                <ellipse cx="255" cy="352" rx="5" ry="3" fill="#2D6A4F" opacity="0.2" filter="url(#soft)"/>
+
+                <!-- LORE (gold) - LEFT branch only, x=40 to x=155, y=250 to y=300 -->
+                <path d="M45 272 C55 262, 78 256, 105 260 C125 255, 142 258, 152 265 C158 272, 156 282, 148 288 C142 296, 122 302, 98 298 C72 302, 52 298, 45 290 C38 284, 38 278, 45 272Z" fill="#C9A84C" opacity="0.4" filter="url(#soft)"/>
+                <circle cx="40" cy="265" r="4" fill="#C9A84C" opacity="0.2" filter="url(#soft)"/>
+
+                <!-- WARDEN (sepia) - RIGHT branch only, x=145 to x=255, y=165 to y=210 -->
+                <path d="M148 182 C158 172, 180 168, 205 172 C225 168, 242 170, 252 178 C260 185, 258 195, 248 200 C240 208, 218 212, 195 208 C172 212, 155 206, 148 198 C142 192, 142 188, 148 182Z" fill="#8B7355" opacity="0.4" filter="url(#soft)"/>
+                <ellipse cx="256" cy="174" rx="4" ry="3" fill="#8B7355" opacity="0.2" filter="url(#soft)" transform="rotate(15 256 174)"/>
+
+                <!-- PUMPKIN (orange) - LEFT branch only, x=40 to x=155, y=82 to y=130 -->
+                <path d="M48 102 C58 92, 78 86, 108 90 C128 85, 142 88, 152 96 C158 102, 156 112, 148 118 C142 126, 120 132, 95 128 C70 132, 52 128, 45 120 C38 114, 38 108, 48 102Z" fill="#C97B4C" opacity="0.4" filter="url(#soft)"/>
+                <circle cx="42" cy="94" r="4" fill="#C97B4C" opacity="0.2" filter="url(#soft)"/>
+
+                <!-- ABOUT (rose) - small, just around crown, x=138 to x=170, y=2 to y=30 -->
+                <path d="M140 12 C144 5, 152 2, 160 6 C168 4, 172 10, 168 18 C172 24, 166 30, 158 28 C152 32, 144 30, 142 24 C136 20, 136 14, 140 12Z" fill="#BF6B63" opacity="0.35" filter="url(#soft)"/>
+
+                <!-- Main stem -->                <!-- Main stem -->                <!-- Main stem -->                <!-- Main stem -->
                 <path class="stem vine-draw" d="M150 470 C148 430, 153 390, 150 350 C147 310, 153 270, 150 230 C147 190, 153 150, 150 110 C147 70, 150 40, 152 15"/>
 
                 <!-- Roots -->
@@ -386,22 +417,22 @@
                 <text class="label-text vine-fade vine-fade-d2" x="236" y="310" style="fill: #2D6A4F;">ledger</text>
 
                 <!-- BRANCH: LORE (crimson/gold) y=280, left -->
-                <circle cx="150" cy="280" r="4" style="fill: #8B2232; opacity: 0.5;" class="vine-fade vine-fade-d3"/>
-                <path class="branch vine-draw vine-draw-d3" d="M150 280 C120 272, 82 264, 50 258" style="stroke: #8B2232;"/>
+                <circle cx="150" cy="280" r="4" style="fill: #C9A84C; opacity: 0.5;" class="vine-fade vine-fade-d3"/>
+                <path class="branch vine-draw vine-draw-d3" d="M150 280 C120 272, 82 264, 50 258" style="stroke: #C9A84C;"/>
                 <g class="vine-fade vine-fade-d3">
-                  <path d="M96 268 C90 260, 88 252, 94 248 C100 252, 100 260, 96 268Z" style="stroke: #8B2232; stroke-width: 1.4; fill: #8B2232; fill-opacity: 0.05;"/>
-                  <path d="M102 270 C108 262, 110 254, 104 250 C98 256, 98 264, 102 270Z" style="stroke: #8B2232; stroke-width: 1.4; fill: #8B2232; fill-opacity: 0.05;"/>
+                  <path d="M96 268 C90 260, 88 252, 94 248 C100 252, 100 260, 96 268Z" style="stroke: #C9A84C; stroke-width: 1.4; fill: #C9A84C; fill-opacity: 0.05;"/>
+                  <path d="M102 270 C108 262, 110 254, 104 250 C98 256, 98 264, 102 270Z" style="stroke: #C9A84C; stroke-width: 1.4; fill: #C9A84C; fill-opacity: 0.05;"/>
                 </g>
                 <g class="vine-fade vine-fade-d3">
-                  <path d="M50 258 C42 244, 40 232, 50 226 C60 232, 58 244, 50 258Z" style="stroke: #8B2232; stroke-width: 1.6; fill: #8B2232; fill-opacity: 0.05;"/>
-                  <path d="M50 258 C58 244, 60 232, 50 226 C40 234, 42 246, 50 258Z" style="stroke: #8B2232; stroke-width: 1.6; fill: #8B2232; fill-opacity: 0.05;"/>
+                  <path d="M50 258 C42 244, 40 232, 50 226 C60 232, 58 244, 50 258Z" style="stroke: #C9A84C; stroke-width: 1.6; fill: #C9A84C; fill-opacity: 0.05;"/>
+                  <path d="M50 258 C58 244, 60 232, 50 226 C40 234, 42 246, 50 258Z" style="stroke: #C9A84C; stroke-width: 1.6; fill: #C9A84C; fill-opacity: 0.05;"/>
                 </g>
                 <g class="vine-fade vine-fade-d4">
                   <circle cx="50" cy="223" r="4.5" style="fill: #C9A84C; opacity: 0.4;"/>
                   <circle cx="43" cy="220" r="3.5" style="fill: #C9A84C; opacity: 0.35;"/>
                   <circle cx="57" cy="220" r="3" style="fill: #C9A84C; opacity: 0.3;"/>
                 </g>
-                <text class="label-text vine-fade vine-fade-d3" x="38" y="216" style="fill: #8B2232;">lore</text>
+                <text class="label-text vine-fade vine-fade-d3" x="38" y="216" style="fill: #C9A84C;">lore</text>
 
                 <!-- BRANCH: WARDEN (sepia) y=190, right -->
                 <circle cx="150" cy="190" r="4" style="fill: #8B7355; opacity: 0.5;" class="vine-fade vine-fade-d4"/>
@@ -456,7 +487,7 @@
           </div>
 
           <hr class="ink-rule">
-          <div class="availability"><span class="status-dot"></span> Currently accepting new projects - let's build something together.</div>
+
 
           <p class="bio-text drop-cap reveal">
             Tyler builds software that works and websites that sell. From five-page sites for local businesses to full-stack platforms handling multi-vendor payments, his work ships fast and holds up - because every project is architected from scratch, not dragged out of a template.
